@@ -49,5 +49,5 @@ app.post('/register',(req,res)=>{
     
 })
 app.listen(3000, ()=> {
- console.log('app is running on port 3000 bitches');
+ console.log('app is running on port 3000 bitchesyea');
 })
