@@ -1,8 +1,12 @@
 const express = require('express')
 const bodyParser = require('body-parser')
+const bcrypt = require('bcrypt-nodejs')
+const cors = require('cors')
 
 const app = express();
+
 app.use(bodyParser.json())
+app.use(cors())
 const database= {
     users: [
         {
@@ -32,7 +36,7 @@ app.post('/signin',(req,res)=>{
     req.body.password === database.users[0].password) {
         res.json('success');
     }else {
-        res.status(400).json('error loggin in');
+        res.status(400).json('error logging in');
     }
 })
 app.post('/register',(req,res)=>{
@@ -40,8 +44,7 @@ app.post('/register',(req,res)=>{
     database.users.push({
         id: '123',
         name: name,
-        email:  email,
-        password:password,
+        email:  email,        
         entries: 0,
         joined: new Date()
     })
